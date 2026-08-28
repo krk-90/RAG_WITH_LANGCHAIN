@@ -8,10 +8,10 @@ from langchain_community.document_loaders import (
     DirectoryLoader
 )
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_openai import OpenAIEmbeddings
+from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from langchain_chroma import Chroma
 
-load_dotenv()
+load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), ".env"))
 COLLECTION_NAME = os.environ.get("CHROMA_COLLECTION", "my_docs")
 
 def load_docs(path:str):
@@ -32,7 +32,7 @@ def load_docs(path:str):
 def chunk_documents(documents,chunk_size = 800,over_lap = 150):
     splitter = RecursiveCharacterTextSplitter(
         chunk_size = chunk_size,
-        over_lap = over_lap,
+        chunk_overlap = over_lap,
     )
     chunks = splitter.split_documents(documents)
     print(f"split into {len(chunks)} chunks.")
@@ -46,7 +46,8 @@ def get_chromadb_client():
     )
 
 def store_chunks(chunks):
-    embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
+    embeddings =GoogleGenerativeAIEmbeddings(model="models/gemini-embedding-001",
+                                             api_key=os.environ["GOOGLE_API_KEY"])
     client = get_chromadb_client()
     vector_store = Chroma.from_documents(
         documents=chunks,

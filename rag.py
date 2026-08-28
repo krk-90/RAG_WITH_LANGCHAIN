@@ -1,10 +1,13 @@
 import os 
 import chromadb
-from langchain_openai import OpenAIEmbeddings,ChatOpenAI
+from dotenv import load_dotenv
+from langchain_google_genai import GoogleGenerativeAIEmbeddings, ChatGoogleGenerativeAI
 from langchain_chroma import Chroma
 from langchain_classic.chains import create_retrieval_chain
 from langchain_classic.chains.combine_documents import create_stuff_documents_chain
 from langchain_core.prompts import ChatPromptTemplate
+
+load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__),".env"))
 
 COLLECTION_NAME = os.environ.get("CHROMA_COLLECTION", "my_docs")
 
@@ -21,12 +24,12 @@ Answer:
 """
 
 def get_vectorstore():
-    embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
+    embeddings = GoogleGenerativeAIEmbeddings(model="models/gemini-embedding-001",
+                                              api_key=os.environ["GOOGLE_API_KEY"])
     client = chromadb.CloudClient(
         api_key=os.environ["CHROMA_API_KEY"],
         tenant=os.environ["CHROMA_TENANT"],
         database=os.environ["CHROMA_DATABASE"],
-        host = os.environ["CHROMA_HOST"]
     )
     return Chroma(
         client=client,
@@ -37,9 +40,10 @@ def get_vectorstore():
 def get_rag_chain(k:int = 4):
     vectore_store = get_vectorstore()
     retriever =vectore_store.as_retriever(search_kwargs = {"k":k})
-    llm_model = ChatOpenAI(
-        model=os.environ.get("OPENAI_API_KEY", "gpt-4o-mini"),
-        temperature=0.3
+    llm_model = ChatGoogleGenerativeAI(
+        model="gemini-flash-latest", 
+        temperature=0.3,
+        api_key=os.environ["GOOGLE_API_KEY"]
     )
 
     prompt = ChatPromptTemplate.from_template(PROMPT_TEMPLATE)

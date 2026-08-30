@@ -182,10 +182,10 @@ See [LICENSE](./LICENSE).
 
 # working proof:
 ## terminal
-![chatbot demo](screen_shots/01.png)
-![chatbot demo](screen_shots/02.png)
+![chatbot demo](screen_shots/01.png.png)
+![chatbot demo](screen_shots/02.png.png)
 
 ## fastapi dashboard:
 
-![chatbot demo](screen_shots/03.png)
-![chatbot demo](screen_shots/04.png)
+![chatbot demo](screen_shots/03.png.png)
+![chatbot demo](screen_shots/04.png.png)

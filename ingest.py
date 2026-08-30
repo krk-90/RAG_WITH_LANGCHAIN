@@ -23,7 +23,7 @@ class Ingestrace:
         self.path = path
         self.chunk_size = chunk_size
         self.overlap = overlap
-        self.started = datetime.now(timezone.utc).isoformat()
+        self.started_at = datetime.now(timezone.utc).isoformat()
         self.stages = {}
         self.counts = {}
         self.errors = []

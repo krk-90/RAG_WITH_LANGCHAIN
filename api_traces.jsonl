@@ -1,0 +1,8 @@
+{"request_id": "564e94b4-8304-47cb-ad8f-a8c97bf7ca18", "timestamp": "2026-08-30T13:10:09.622612+00:00", "method": "GET", "path": "/", "status_code": 200, "latency_ms": 2.73}
+{"request_id": "b21c42c1-1bed-4205-9576-285ddcebb771", "timestamp": "2026-08-30T13:10:15.316044+00:00", "method": "GET", "path": "/docs", "status_code": 200, "latency_ms": 1.08}
+{"request_id": "56cdc8d4-1f76-4370-9b7e-e0cb1f7df695", "timestamp": "2026-08-30T13:10:15.450514+00:00", "method": "GET", "path": "/openapi.json", "status_code": 200, "latency_ms": 10.76}
+{"request_id": "87047755-fb84-42c6-96e9-b52a9481af9c", "timestamp": "2026-08-30T13:11:31.627547+00:00", "method": "POST", "path": "/chat", "status_code": 500, "latency_ms": 48389.52}
+{"request_id": "9e647188-0f6d-41da-8ac6-f294e4606893", "timestamp": "2026-08-30T13:20:28.482079+00:00", "method": "GET", "path": "/", "status_code": 200, "latency_ms": 3.95}
+{"request_id": "fa0da314-90bf-4fa5-96b8-4b2de47ff49e", "timestamp": "2026-08-30T13:20:33.521613+00:00", "method": "GET", "path": "/docs", "status_code": 200, "latency_ms": 0.5}
+{"request_id": "af0b2894-e209-4bb5-9c2e-0b5a9ae3d8cb", "timestamp": "2026-08-30T13:20:33.653920+00:00", "method": "GET", "path": "/openapi.json", "status_code": 200, "latency_ms": 10.94}
+{"request_id": "fbbc77bb-ce25-4367-9c68-eb9160b94f57", "timestamp": "2026-08-30T13:21:15.641843+00:00", "method": "POST", "path": "/chat", "status_code": 500, "latency_ms": 16043.12}
